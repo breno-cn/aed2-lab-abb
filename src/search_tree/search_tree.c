@@ -42,3 +42,15 @@ node_t *Tree_search(search_tree_t *tree, int cep) {
 void Tree_insert(search_tree_t *tree, node_t *node) {
     Node_insert(tree->start, node);
 }
+
+void Tree_central(search_tree_t *tree) {
+    Node_central(tree->start);
+}
+
+void Tree_pre(search_tree_t *tree) {
+    Node_pre(tree->start);
+}
+
+void Tree_post(search_tree_t *tree) {
+    Node_post(tree->start);
+}

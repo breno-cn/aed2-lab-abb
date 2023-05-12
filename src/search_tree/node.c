@@ -60,3 +60,30 @@ void Node_insert(node_t *current, node_t *to_insert) {
         Node_insert(current->right, to_insert);
     }
 }
+
+void Node_central(node_t *current) {
+    if (!current)
+        return;
+
+    Node_central(current->left);
+    printf("%d\n", current->data->cep);
+    Node_central(current->right);
+}
+
+void Node_pre(node_t *current) {
+    if (!current)
+        return;
+
+    printf("%d\n", current->data->cep);
+    Node_pre(current->left);
+    Node_pre(current->right);
+}
+
+void Node_post(node_t *current) {
+    if (!current)
+        return;
+
+    Node_post(current->left);
+    Node_post(current->right);
+    printf("%d\n", current->data->cep);
+}

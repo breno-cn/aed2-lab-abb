@@ -10,3 +10,7 @@ search_tree_t *Tree_new();
 void Tree_read_file(search_tree_t *tree, char *filepath);
 node_t *Tree_search(search_tree_t *tree, int cep);
 void Tree_insert(search_tree_t *tree, node_t *node);
+
+void Tree_central(search_tree_t *tree);
+void Tree_pre(search_tree_t *tree);
+void Tree_post(search_tree_t *tree);
