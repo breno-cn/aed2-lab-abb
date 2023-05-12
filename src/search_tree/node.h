@@ -20,7 +20,7 @@ typedef struct node_t {
 
 node_t *Node_new(int cep, char *state, char *city, char *street);
 node_t *Node_search(node_t *current, int cep);
-void Node_insert(node_t *current, node_t *to_insert);
+void Node_insert(node_t **current, node_t *to_insert);
 
 void Node_central(node_t *current);
 void Node_pre(node_t *current);

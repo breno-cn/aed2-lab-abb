@@ -36,29 +36,31 @@ node_t *Node_search(node_t *current, int cep) {
     return Node_search(current->right, cep);
 }
 
-void Node_insert(node_t *current, node_t *to_insert) {
+void Node_insert(node_t **current, node_t *to_insert) {
     // primeiro nó a ser inserido
     if (current == NULL) {
-        current = to_insert;
-        current->parent = NULL;
+        printf("primeiro no\n");
+        *current = to_insert;
         return;
     }
 
     // nó sem filhos, inserir
-    if (to_insert->data->cep < current->data->cep) {
+    if (to_insert->data->cep < (*current)->data->cep) {
+        printf("na esquerda\n");
         // inserir na esquerda
-        if (current->left == NULL) {
-            current->left = to_insert;
+        if ((*current)->left == NULL) {
+            (*current)->left = to_insert;
             return;
         }
-        Node_insert(current->left, to_insert);
+        Node_insert(&(*current)->left, to_insert);
     } else {
+        printf("na direita\n");
         // inserir na direita
-        if (current->right == NULL) {
-            current->right = to_insert;
+        if ((*current)->right == NULL) {
+            (*current)->right = to_insert;
             return;
         }
-        Node_insert(current->right, to_insert);
+        Node_insert(&(*current)->right, to_insert);
     }
 }
 

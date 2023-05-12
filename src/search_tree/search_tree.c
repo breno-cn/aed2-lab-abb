@@ -8,7 +8,7 @@
 
 search_tree_t *Tree_new() {
     search_tree_t *tree = malloc(sizeof(search_tree_t));
-    if (tree)
+    if (!tree)
         return NULL;
 
     tree->start = NULL;
@@ -23,10 +23,14 @@ void Tree_read_file(search_tree_t *tree, char *filepath) {
         int cep = atoi(strtok(buffer, " "));
         char *state = strtok(NULL, " ");
         char *city = strtok(NULL, " ");
-        char *street = strtok(NULL, " ");
+        char *street = strtok(NULL, "\n");
 
-        if (Tree_search(tree, cep))
+        printf("%d %s %s %s\n", cep, state, city, street);
+
+        if (Tree_search(tree, cep)) {
+            printf("ja existe\n");
             continue;
+        }
 
         node_t *node = Node_new(cep, state, city, street);
         Tree_insert(tree, node);
@@ -40,7 +44,7 @@ node_t *Tree_search(search_tree_t *tree, int cep) {
 }
 
 void Tree_insert(search_tree_t *tree, node_t *node) {
-    Node_insert(tree->start, node);
+    Node_insert(&(tree->start), node);
 }
 
 void Tree_central(search_tree_t *tree) {
